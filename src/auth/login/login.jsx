@@ -19,7 +19,7 @@ const Login = () => {
         className="min-h-screen bg-no-repeat bg-cover text-gray-900 flex justify-center"
         style={{
           backgroundImage:
-            'url("https://images.unsplash.com/photo-1729277133095-bff46b56c29a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
+            'url("https://img.freepik.com/free-photo/table-with-plate-mug_23-2147680122.jpg?ga=GA1.1.518592586.1717923796&semt=ais_hybrid")',
         }}
       >
         <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
@@ -28,7 +28,7 @@ const Login = () => {
               className=" rounded-l-lg bg-center w-full  bg-cover bg-no-repeat"
               style={{
                 backgroundImage:
-                  'url("https://images.unsplash.com/photo-1542317854-f9596ae570f7?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
+                  'url("https://img.freepik.com/free-vector/telecommuting-concept-with-man-home_23-2148488959.jpg?ga=GA1.1.518592586.1717923796&semt=ais_hybrid")',
               }}
             ></div>
           </div>
@@ -54,7 +54,7 @@ const Login = () => {
                     />
                   </div>
                   <div>
-                    <button className="mt-5 tracking-wide font-semibold bg-yellow-300 text-black-100 w-full py-4 rounded-lg hover:bg-yellow-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                    <button className="mt-5 tracking-wide font-semibold bg-yellow-300 text-black-100 w-full py-4 rounded-lg hover:bg-yellow-400 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                       <svg
                         className="w-6 h-6 -ml-2"
                         fill="none"
@@ -69,13 +69,13 @@ const Login = () => {
                       </svg>
                       <span className="ml-3">Sign In</span>
                     </button>
-                    <p className=" text-right">
+                  </div>
+                    <p className=" text-center">
                       Don't have an account?{" "}
                       <a href="register" className="text-sm text-blue-600 ">
                         Sign Up
                       </a>
                     </p>
-                  </div>
                   <div className=" border-b text-center">
                     <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
                       Or sign in with e-mail

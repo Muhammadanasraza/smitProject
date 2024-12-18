@@ -23,6 +23,7 @@ const Header = () => {
       if (user) {
         setUser(user);
         setLogin(true);
+        console.log("user",user)
       } else {
         setLogin(false);
         setUser(null);
@@ -60,8 +61,7 @@ const Header = () => {
                 <AvatarImage
                   className="cursor-pointer list-image-none"
                   src={
-                    user.photoURL||
-                    "https://images.unsplash.com/photo-1734227267138-b886e9b0a954?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8"
+                    user.photoURL
                   }
                   alt="@shadcn"
                 />
