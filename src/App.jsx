@@ -6,6 +6,9 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Login from './auth/login/login';
 import Register from './auth/register/register';
+import Student from './components/Student';
+import Dashboard from './components/Dashboard';
+import Profile from './components/Profile';
 function App() {
 
   return (
@@ -17,6 +20,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path='register' element={<Register />} />
+          <Route path='/student' element={<Student />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/profile' element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </>
