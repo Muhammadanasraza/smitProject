@@ -4,6 +4,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router";
 import Header from './components/Header';
 import Home from './components/Home';
+import Student from './Student/Student';
 function App() {
 
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/" element={<Home />} />
+          <Route path="student" element={<Student/>}></Route>
         </Routes>
       </BrowserRouter>
     </>
