@@ -77,14 +77,15 @@ const Header = () => {
               </SheetHeader>
               <Separator className="my-4" />
               <nav className="flex flex-col space-y-4">
+              <a href="/profile" className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors">
+                  <User className="h-5 w-5" />
+                  <span>Profile</span>
+                </a>
                 <a href="/" className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors">
                   <Home className="h-5 w-5" />
                   <span>Home</span>
                 </a>
-                <a href="/profile" className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors">
-                  <User className="h-5 w-5" />
-                  <span>Profile</span>
-                </a>
+               
                 <a href="/dashboard" className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors">
                   <LayoutDashboard className="h-5 w-5" />
                   <span>Dashboard</span>
