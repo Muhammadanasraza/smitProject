@@ -13,6 +13,7 @@ import { auth } from "@/auth/utils/authutils";
 import { Columns, User, Home, LayoutDashboard, GraduationCap, LogOut } from 'lucide-react';
 import { Separator } from "@/components/ui/separator";
 
+
 const Header = () => {
   const [user, setUser] = useState(null);
 
@@ -20,10 +21,8 @@ const Header = () => {
     const stateChange = auth.onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
-        setIsLoggedIn(true);
         console.log("user", user);
       } else {
-        setIsLoggedIn(false);
         setUser(null);
       }
     });
@@ -52,7 +51,7 @@ const Header = () => {
             M-System
           </span>
         </a>
-        {isLoggedIn && user ? (
+        {user ? (
           <Sheet>
             <SheetTrigger asChild>
               <Avatar className="cursor-pointer">
@@ -110,7 +109,7 @@ const Header = () => {
           </Sheet>
         ) : (
           <a href="/login">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+            <Button className="text-white">
               Login
               <svg
                 fill="none"

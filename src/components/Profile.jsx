@@ -5,13 +5,14 @@ import { auth } from "@/auth/utils/authutils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { GraduationCap, Calendar } from 'lucide-react';
+import { GraduationCap, Calendar, Code, Palette, Book } from 'lucide-react';
 
 // Mock data for enrolled courses and attendance history
 const enrolledCourses = [
-  { id: 1, name: "Introduction to React", progress: 75 },
-  { id: 2, name: "Advanced JavaScript", progress: 50 },
-  { id: 3, name: "UI/UX Design Principles", progress: 90 },
+  { id: 1, name: "Introduction to React", progress: 75, icon: Code },
+  { id: 2, name: "Advanced JavaScript", progress: 50, icon: Code },
+  { id: 3, name: "UI/UX Design Principles", progress: 90, icon: Palette },
+  { id: 4, name: "Data Structures and Algorithms", progress: 30, icon: Book },
 ];
 
 const attendanceHistory = [
@@ -22,7 +23,7 @@ const attendanceHistory = [
   { id: 5, date: "2023-03-11", course: "Advanced JavaScript", status: "Present" },
 ];
 
-export default function Profile() {
+export default function ProfilePage() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -65,19 +66,31 @@ export default function Profile() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <ul className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {enrolledCourses.map((course) => (
-              <li key={course.id} className="flex justify-between items-center">
-                <span>{course.name}</span>
-                <div className="w-1/3 bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                  <div
-                    className="bg-blue-600 h-2.5 rounded-full"
-                    style={{ width: `${course.progress}%` }}
-                  ></div>
-                </div>
-              </li>
+              <Card key={course.id} className="overflow-hidden">
+                <CardHeader className="p-4">
+                  <div className="flex items-center space-x-2">
+                    <course.icon className="h-6 w-6 text-blue-500" />
+                    <CardTitle className="text-lg">{course.name}</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-4 pt-0">
+                  <div className="mt-2">
+                    <div className="text-sm font-medium text-gray-500 mb-1">
+                      Progress: {course.progress}%
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                      <div
+                        className="bg-blue-600 h-2.5 rounded-full"
+                        style={{ width: `${course.progress}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
-          </ul>
+          </div>
         </CardContent>
       </Card>
 
