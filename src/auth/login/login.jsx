@@ -3,11 +3,12 @@ import React from "react";
 import { auth, provider, signInWithPopup } from "../utils/authutils";
 
 const Login = () => {
-  
+
   const googleLogin = () => {
+   
     signInWithPopup(auth, provider).then(async (result) => {
       console.log(result);
-      if(result) {
+      if (result) {
         window.location.href = "/";
       }
     });
@@ -70,12 +71,12 @@ const Login = () => {
                       <span className="ml-3">Sign In</span>
                     </button>
                   </div>
-                    <p className=" text-center">
-                      Don't have an account?{" "}
-                      <a href="register" className="text-sm text-blue-600 ">
-                        Sign Up
-                      </a>
-                    </p>
+                  <p className=" text-center">
+                    Don't have an account?{" "}
+                    <a href="register" className="text-sm text-blue-600 ">
+                      Sign Up
+                    </a>
+                  </p>
                   <div className=" border-b text-center">
                     <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
                       Or sign in with e-mail

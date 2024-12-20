@@ -12,6 +12,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { auth } from "@/auth/utils/authutils";
 import { Columns, User, Home, LayoutDashboard, GraduationCap, LogOut } from 'lucide-react';
 import { Separator } from "@/components/ui/separator";
+import logo from "../assets/images/logo.jpg"
 
 
 const Header = () => {
@@ -43,7 +44,7 @@ const Header = () => {
       <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
-            src="https://img.freepik.com/free-photo/view-3d-book-with-graduation-cap_23-2151103704.jpg?ga=GA1.1.518592586.1717923796&semt=ais_hybrid"
+            src={logo}
             className="h-10 w-10 rounded-full object-cover"
             alt="M-System Logo"
           />

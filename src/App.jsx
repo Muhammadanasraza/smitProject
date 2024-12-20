@@ -9,6 +9,7 @@ import Register from './auth/register/register';
 import Student from './components/Student';
 import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
+import Courses from './components/Courses';
 function App() {
 
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/student' element={<Student />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/courses' element={<Courses />} />
         </Routes>
       </BrowserRouter>
     </>
