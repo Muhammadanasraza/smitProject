@@ -4,12 +4,14 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router";
 import Header from './components/Header';
 import Home from './components/Home';
+
 import Login from './auth/login/login';
 import Register from './auth/register/register';
 import Student from './components/Student';
 import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
 import Courses from './components/Courses';
+import Trainer from './components/Trainer';
 function App() {
 
   return (
