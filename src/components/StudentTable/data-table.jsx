@@ -58,8 +58,7 @@ export function StudentTable({
         },
     })
     return (
-        <div className="rounded-md border bg-gray-50">
-
+        <div className="max-w-screen-xl mx-auto rounded-md border bg-gray-10">
             <div className="flex justify-between px-3 py-2 gap-2 ">
 
                 <FloatingLabelInput
