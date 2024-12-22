@@ -8,12 +8,54 @@ import { Separator } from "@/components/ui/separator";
 import { GraduationCap, Calendar, Code, Palette, Book } from 'lucide-react';
 
 // Mock data for enrolled courses and attendance history
-const enrolledCourses = [
-  { id: 1, name: "Introduction to React", progress: 75, icon: Code },
-  { id: 2, name: "Advanced JavaScript", progress: 50, icon: Code },
-  { id: 3, name: "UI/UX Design Principles", progress: 90, icon: Palette },
-  { id: 4, name: "Data Structures and Algorithms", progress: 30, icon: Book },
-];
+'use client'
+
+import { Badge } from "@/components/ui/badge"
+
+const courses = [
+  {
+    title: "Web and Mobile App Development",
+    batch: "11",
+    roll: "178084",
+    city: "Karachi",
+    campus: "N/A",
+  },
+  {
+    title: "Artificial Intelligence",
+    batch: "12",
+    roll: "178085",
+    city: "Lahore",
+    campus: "Main",
+  },
+  {
+    title: "Cloud Computing",
+    batch: "10",
+    roll: "178086",
+    city: "Islamabad",
+    campus: "N/A",
+  },
+  {
+    title: "Blockchain",
+    batch: "9",
+    roll: "178087",
+    city: "Karachi",
+    campus: "City",
+  },
+  {
+    title: "Internet of Things",
+    batch: "13",
+    roll: "178088",
+    city: "Lahore",
+    campus: "N/A",
+  },
+  {
+    title: "Cybersecurity",
+    batch: "11",
+    roll: "178089",
+    city: "Islamabad",
+    campus: "Main",
+  },
+]
 
 const attendanceHistory = [
   { id: 1, date: "2023-03-15", course: "Introduction to React", status: "Present" },
@@ -43,7 +85,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-4 space-y-6">
+    <div className="max-w-screen-xl  container mx-auto p-4 space-y-6">
       <Card>
         <CardHeader>
           <div className="flex items-center space-x-4">
@@ -59,39 +101,55 @@ export default function ProfilePage() {
         </CardHeader>
       </Card>
 
-      <Card>
+      <Card className="p-4">
         <CardHeader>
           <CardTitle className="text-xl font-semibold flex items-center">
             <GraduationCap className="mr-2" /> Enrolled Courses
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {enrolledCourses.map((course) => (
-              <Card key={course.id} className="overflow-hidden">
-                <CardHeader className="p-4">
-                  <div className="flex items-center space-x-2">
-                    <course.icon className="h-6 w-6 text-blue-500" />
-                    <CardTitle className="text-lg">{course.name}</CardTitle>
+
+        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
+        {courses.map((course, index) => (
+          <div key={index} className="flex relative h-60 max-sm:w-full">
+            <img
+              alt={`${course.title} course`}
+              className="absolute inset-0 w-full h-full object-cover rounded-xl object-center"
+              src="https://img.freepik.com/free-psd/back-school-new-normal-banner_23-2149027689.jpg"
+            />
+            <Card className=" relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+              <CardHeader>
+                <CardTitle className="text-2xl font-bold">
+                  {course.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <span className="font-semibold">Batch: </span>
+                    <span className="text-gray-600">{course.batch}</span>
                   </div>
-                </CardHeader>
-                <CardContent className="p-4 pt-0">
-                  <div className="mt-2">
-                    <div className="text-sm font-medium text-gray-500 mb-1">
-                      Progress: {course.progress}%
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                      <div
-                        className="bg-blue-600 h-2.5 rounded-full"
-                        style={{ width: `${course.progress}%` }}
-                      ></div>
-                    </div>
+                  <div>
+                    <span className="font-semibold">Roll: </span>
+                    <span className="text-gray-600">{course.roll}</span>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                  <div>
+                    <span className="font-semibold">City: </span>
+                    <span className="text-gray-600">{course.city}</span>
+                  </div>
+                  <div>
+                    <span className="font-semibold">Campus: </span>
+                    <span className="text-gray-600">{course.campus}</span>
+                  </div>
+                  <Badge className="bg-sky-100 w-fit text-sky-800 hover:bg-sky-100">
+                    ENROLLED
+                  </Badge>
+                </div>
+              </CardContent>
+            </Card>
           </div>
-        </CardContent>
+        ))}
+      </div>
+        
       </Card>
 
       <Card>
