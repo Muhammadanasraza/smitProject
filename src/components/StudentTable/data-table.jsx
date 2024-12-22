@@ -58,7 +58,7 @@ export function StudentTable({
         },
     })
     return (
-        <div className="max-w-screen-xl mx-auto rounded-md border bg-gray-10">
+        <div className="max-w-screen-xl mx-auto rounded-md border ">
             <div className="flex justify-between px-3 py-2 gap-2 ">
 
                 <FloatingLabelInput
@@ -74,7 +74,7 @@ export function StudentTable({
                     className="max-w-sm "
                 />
 
-                <select className="flex justify-center items-center gap-2 border rounded px-2 bg-gray-200 focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 text-sm "
+                <select className="flex justify-center items-center gap-2 border rounded px-3 bg-grey-200 focus:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400 text-sm text-grey "
 
                     value={selectedColumn}
                     onChange={(e) => setSelectedColumn(e.target.value)
@@ -83,9 +83,9 @@ export function StudentTable({
                     <option value="email">Email</option>
                     <option value="section">Section</option>
                     <option value="batch">Batch</option>
-
                 </select>
             </div>
+
             <div className="rounded-md border">
                 <Table>
                     <TableHeader>
@@ -93,7 +93,9 @@ export function StudentTable({
                             <TableRow key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => {
                                     return (
-                                        <TableHead key={header.id}>
+                                        <TableHead
+                                            className="bg-gray-200"
+                                            key={header.id}>
                                             {header.isPlaceholder
                                                 ? null
                                                 : flexRender(
@@ -106,18 +108,37 @@ export function StudentTable({
                             </TableRow>
                         ))}
                     </TableHeader>
-                    <TableBody>
+                    <TableBody >
                         {table.getRowModel().rows?.length ? (
                             table.getRowModel().rows.map((row) => (
                                 <TableRow
+                                    className="hover:bg-gray-100"
                                     key={row.id}
                                     data-state={row.getIsSelected() && "selected"}
                                 >
-                                    {row.getVisibleCells().map((cell) => (
-                                        <TableCell key={cell.id}>
-                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                        </TableCell>
-                                    ))}
+                                    {row.getVisibleCells().map((cell) => {
+                                        if (cell.column.id === "email") {
+                                            return (
+                                                <TableCell
+                                                className="flex items-center gap-1"
+                                                key={cell.id}>
+                                                    <img
+                                                        src={`https://ui-avatars.com/api/?name=${encodeURIComponent(cell.getValue())}`}
+                                                        alt="Avatar"
+                                                        className="w-8 h-8 rounded-full"
+                                                    />
+                                                    {/* Render email */}
+                                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                                </TableCell>
+                                            )
+                                        }
+                                        return (
+                                            <TableCell key={cell.id}>
+                                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                            </TableCell>
+
+                                        )
+                                    })}
                                 </TableRow>
                             ))
                         ) : (
@@ -130,6 +151,6 @@ export function StudentTable({
                     </TableBody>
                 </Table>
             </div>
-        </div>
+        </div >
     )
 }
