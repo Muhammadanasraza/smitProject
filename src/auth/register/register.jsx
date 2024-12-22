@@ -1,5 +1,4 @@
 import FloatingLabelInput from "@/components/ui/input";
-import FloatingLabelInput from "@/components/ui/FloatingLabelInput";
 
 const Register = () => {
 

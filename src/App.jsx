@@ -27,6 +27,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/courses' element={<Courses />} />
+          <Route path='/trainer' element={<Trainer />} />
         </Routes>
       </BrowserRouter>
     </>

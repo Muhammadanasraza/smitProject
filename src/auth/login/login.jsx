@@ -1,5 +1,4 @@
 import FloatingLabelInput from "@/components/ui/input";
-import FloatingLabelInput from "@/components/ui/FloatingLabelInput";
 import React from "react";
 import { auth, provider, signInWithPopup } from "../utils/authutils";
 
