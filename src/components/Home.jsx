@@ -20,15 +20,11 @@ const Home = () => {
           <div className="flex justify-center">
             <a href="/courses">
               <Button className="inline-flex  border-0 py-5 px-8 focus:outline-none rounded text-lg">
-                Courses
+                Explore Courses
               </Button>
 
             </a>
-            <a href="">
-              <Button variant="outline" className="ml-4 inline-flexborder-0 py-5 px-8 focus:outline-none hover:bg-gray-200 rounded text-lg">
-                Apply
-              </Button>
-            </a>
+            
           </div>
         </div>
       </div>
