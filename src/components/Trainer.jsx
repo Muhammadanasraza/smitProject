@@ -6,7 +6,8 @@ import { studentData } from "@/lib/data";
 
 export default function Trainer() {
     return (
-        <div className="container mt-5">
+        <div className="">
+            {/* max-w-screen-xl mx-auto */}
             <h1 className="flex justify-center font-bold p-10 text-3xl underline">Student Info:</h1>
             <div className="p-5 ">
                 <StudentTable columns={columns} data={studentData}  />
