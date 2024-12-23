@@ -58,7 +58,12 @@ export function StudentTable({
         },
     })
     return (
+<<<<<<< Updated upstream
         <div className="max-w-screen-xl mx-auto rounded-md border bg-gray-10">
+=======
+        <div className="max-w-screen-xl  mx-auto rounded-md border p-1 ">
+
+>>>>>>> Stashed changes
             <div className="flex justify-between px-3 py-2 gap-2 ">
 
                 <FloatingLabelInput
@@ -86,8 +91,14 @@ export function StudentTable({
 
                 </select>
             </div>
+<<<<<<< Updated upstream
             <div className="rounded-md border">
                 <Table>
+=======
+
+            <div className="table-container rounded-md border ">
+                <Table className="responsive-table ">
+>>>>>>> Stashed changes
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (
                             <TableRow key={headerGroup.id}>
@@ -113,11 +124,37 @@ export function StudentTable({
                                     key={row.id}
                                     data-state={row.getIsSelected() && "selected"}
                                 >
+<<<<<<< Updated upstream
                                     {row.getVisibleCells().map((cell) => (
                                         <TableCell key={cell.id}>
                                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </TableCell>
                                     ))}
+=======
+                                    {row.getVisibleCells().map((cell) => {
+                                        if (cell.column.id === "name") {
+                                            return (
+                                                <TableCell
+                                                    className="flex items-center gap-1"
+                                                    key={cell.id}>
+                                                    <img
+                                                        src={`https://ui-avatars.com/api/?name=${encodeURIComponent(cell.getValue())}`}
+                                                        alt="Avatar"
+                                                        className="w-8 h-8 rounded-full"
+                                                    />
+                                                    {/* Render email */}
+                                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                                </TableCell>
+                                            )
+                                        }
+                                        return (
+                                            <TableCell key={cell.id}>
+                                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                            </TableCell>
+
+                                        )
+                                    })}
+>>>>>>> Stashed changes
                                 </TableRow>
                             ))
                         ) : (

@@ -1,0 +1,33 @@
+/* Make the table layout fixed and wrap text in cells  */
+ .responsive-table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+} 
+
+/* Ensure cells wrap content */
+.responsive-table th,
+.responsive-table td {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+} 
+
+/* Enable horizontal scrolling for the table on small screens */
+.table-container {
+    overflow-x: auto;
+    margin: 0;
+    padding: 0;
+}
+
+ /* Adjust padding and font sizes for smaller screens  */
+ @media (max-width: 768px) {
+    .table-container {
+        padding: 10px;
+    }
+    .responsive-table th,
+    .responsive-table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
