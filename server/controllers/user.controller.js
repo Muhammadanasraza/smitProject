@@ -3,6 +3,7 @@ import { generateToken } from "../utils/generateToken.js";
 import { UserModal } from "../Modals/UserModal.js";
 export const register = async (req, res) => {
   try {
+    console.log(req.body)
     const { name, email, password } = req.body;
     if (!name || !email || !password) {
       return res.status(400).json({
@@ -37,6 +38,7 @@ export const register = async (req, res) => {
 };
 export const login = async (req, res) => {
   try {
+        console.log(req.body);
     const { email, password } = req.body;
     if (!email || !password) {
       return res.status(400).json({
