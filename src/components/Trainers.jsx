@@ -3,6 +3,15 @@
 import React from 'react'
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Button } from './ui/button'
 
 const courses = [
   {
@@ -49,14 +58,40 @@ const courses = [
   },
 ]
 
-export default function st() {
+export default function Trainers() {
+
+  const user = "admin"
+  // const user = "student"
+
+
   return (
     <div className="container max-w-screen-xl px-5 py-10 mx-auto">
-      <h1 className="title-font sm:text-4xl text-3xl py-10 mb-4 font-bold text-gray-900">
-        Enrolled Courses
-      </h1>
+      <div className="justify-between flex py-10 ">
 
-      <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
+        <h1 className="title-font sm:text-4xl text-3xl  mb-4 font-bold text-gray-900">
+          Trainers
+        </h1>
+        {
+          user == "admin" ? <Dialog>
+            <Button className="font-medium">
+              <DialogTrigger>Add Trainer</DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Are you absolutely sure?</DialogTitle>
+                  <DialogDescription>
+                    This action cannot be undone. This will permanently delete your account
+                    and remove your data from our servers.
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Button>
+          </Dialog> :
+            ""
+        }
+
+      </div>
+
+      {/* <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
         {courses.map((course, index) => (
           <div key={index} className="flex relative h-60 max-sm:w-full">
             <img
@@ -96,7 +131,7 @@ export default function st() {
             </Card>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   )
 }

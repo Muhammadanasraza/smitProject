@@ -7,11 +7,12 @@ import Home from './components/Home';
 
 import Login from './auth/login/login';
 import Register from './auth/register/register';
-import Student from './components/Student';
+import Student from './components/Trainers';
 import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
 import Courses from './components/Courses';
-import Trainer from './components/Trainer';
+import Students from './components/Students';
+import Trainers from './components/Trainers';
 function App() {
 
   return (
@@ -23,11 +24,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path='register' element={<Register />} />
-          <Route path='/student' element={<Student />} />
+          <Route path='/trainers' element={<Trainers />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/courses' element={<Courses />} />
-          <Route path='/trainer' element={<Trainer />} />
+          <Route path='/student' element={<Students />} />
         </Routes>
       </BrowserRouter>
     </>

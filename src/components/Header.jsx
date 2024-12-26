@@ -48,7 +48,7 @@ const Header = () => {
             className="h-10 w-10 rounded-full object-cover"
             alt="M-System Logo"
           />
-          <span className="self-center font-extrabold text-2xl whitespace-nowrap dark:text-white">
+          <span className="self-center font-sans font-extrabold text-2xl whitespace-nowrap dark:text-white">
             M-System
           </span>
         </a>
@@ -91,13 +91,13 @@ const Header = () => {
                   <LayoutDashboard className="h-5 w-5" />
                   <span>Dashboard</span>
                 </a>
-                <a href="/trainer" className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors">
-                  <GraduationCap className="h-5 w-5" />
-                  <span>Trainer</span>
-                </a>
                 <a href="/student" className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors">
                   <GraduationCap className="h-5 w-5" />
-                  <span>Student</span>
+                  <span>Students</span>
+                </a>
+                <a href="/trainers" className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors">
+                  <GraduationCap className="h-5 w-5" />
+                  <span>Tainers</span>
                 </a>
                 <button
                   onClick={handleLogout}
