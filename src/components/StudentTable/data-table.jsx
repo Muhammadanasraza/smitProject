@@ -85,72 +85,74 @@ export function StudentTable({
                     <option value="batch">Batch</option>
                 </select>
             </div>
-
             <div className="rounded-md border">
-                <Table>
-                    <TableHeader>
-                        {table.getHeaderGroups().map((headerGroup) => (
-                            <TableRow key={headerGroup.id}>
-                                {headerGroup.headers.map((header) => {
-                                    return (
-                                        <TableHead
-                                            className="bg-gray-200"
-                                            key={header.id}>
-                                            {header.isPlaceholder
-                                                ? null
-                                                : flexRender(
-                                                    header.column.columnDef.header,
-                                                    header.getContext()
-                                                )}
-                                        </TableHead>
-                                    )
-                                })}
-                            </TableRow>
-                        ))}
-                    </TableHeader>
-                    <TableBody >
-                        {table.getRowModel().rows?.length ? (
-                            table.getRowModel().rows.map((row) => (
-                                <TableRow
-                                    className="hover:bg-gray-100"
-                                    key={row.id}
-                                    data-state={row.getIsSelected() && "selected"}
-                                >
-                                    {row.getVisibleCells().map((cell) => {
-                                        if (cell.column.id === "email") {
-                                            return (
-                                                <TableCell
-                                                className="flex items-center gap-1"
-                                                key={cell.id}>
-                                                    <img
-                                                        src={`https://ui-avatars.com/api/?name=${encodeURIComponent(cell.getValue())}`}
-                                                        alt="Avatar"
-                                                        className="w-8 h-8 rounded-full"
-                                                    />
-                                                    {/* Render email */}
-                                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                                </TableCell>
-                                            )
-                                        }
-                                        return (
-                                            <TableCell key={cell.id}>
-                                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                            </TableCell>
 
+                <div className="table-container rounded-md border ">
+                    <Table className="responsive-table ">
+                        <TableHeader>
+                            {table.getHeaderGroups().map((headerGroup) => (
+                                <TableRow key={headerGroup.id}>
+                                    {headerGroup.headers.map((header) => {
+                                        return (
+                                            <TableHead
+                                                className="bg-gray-200"
+                                                key={header.id}>
+                                                {header.isPlaceholder
+                                                    ? null
+                                                    : flexRender(
+                                                        header.column.columnDef.header,
+                                                        header.getContext()
+                                                    )}
+                                            </TableHead>
                                         )
                                     })}
                                 </TableRow>
-                            ))
-                        ) : (
-                            <TableRow>
-                                <TableCell colSpan={columns.length} className="h-24 text-center">
-                                    No results.
-                                </TableCell>
-                            </TableRow>
-                        )}
-                    </TableBody>
-                </Table>
+                            ))}
+                        </TableHeader>
+                        <TableBody >
+                            {table.getRowModel().rows?.length ? (
+                                table.getRowModel().rows.map((row) => (
+                                    <TableRow
+                                        className="hover:bg-gray-100"
+                                        key={row.id}
+                                        data-state={row.getIsSelected() && "selected"}
+                                    >
+                                        {row.getVisibleCells().map((cell) => {
+                                            if (cell.column.id === "email") {
+                                                return (
+                                                    <TableCell
+                                                        className="flex items-center gap-1"
+                                                        key={cell.id}>
+                                                        <img
+                                                            src={`https://ui-avatars.com/api/?name=${encodeURIComponent(cell.getValue())}`}
+                                                            alt="Avatar"
+                                                            className="w-8 h-8 rounded-full"
+                                                        />
+                                                        {/* Render email */}
+                                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                                    </TableCell>
+                                                )
+                                            }
+                                            return (
+                                                <TableCell key={cell.id}>
+                                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                                </TableCell>
+
+                                            )
+                                        })}
+                                    </TableRow>
+                                ))
+                            ) : (
+                                <TableRow>
+                                    <TableCell colSpan={columns.length} className="h-24 text-center">
+                                        No results.
+                                    </TableCell>
+                                </TableRow>
+                            )}
+                        </TableBody>
+                    </Table>
+                </div>
             </div>
-        </div >
+        </div>
     )
 }
