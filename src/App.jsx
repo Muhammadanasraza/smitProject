@@ -5,9 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Header from './components/Header';
 import Home from './components/Home';
 import AssignmentData from './Assignment/AssignmentData';
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CreateAssignment from './Assignment/CreateAssignment';
 
-// import Student from './Student/Student';
 function App() {
 
   return (
@@ -18,6 +17,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/" element={<Home />} />
           <Route path='/assignment' element={<AssignmentData/>}/>
+          <Route path="/create-assignment" element={<CreateAssignment />} />
           
           {/* <Route path="student" element={<Student/>}></Route> */}
         </Routes>
