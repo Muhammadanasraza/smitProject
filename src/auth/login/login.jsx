@@ -5,7 +5,7 @@ import { auth, provider, signInWithPopup } from "../utils/authutils";
 const Login = () => {
 
   const googleLogin = () => {
-   
+
     signInWithPopup(auth, provider).then(async (result) => {
       console.log(result);
       if (result) {
@@ -39,19 +39,23 @@ const Login = () => {
               <h1 className="text-2xl xl:text-3xl font-extrabold">Sign In</h1>
               <div className="w-full flex-1 mt-6">
                 <div className="mx-auto gap-4 flex flex-col  max-w-xs">
-                  <div className="gap-10 flex flex-col">
-                    <FloatingLabelInput
+                  <div className="gap-10 flex flex-col my-5">
+                    <input
+                      className="w-full px-4 py-2  text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500"
                       id="email"
                       label="Email"
                       placeholder="Enter your email"
-                      type="Email"
+                      type="email"
+                      value=''
                     />
 
-                    <FloatingLabelInput
+                    <input
+                      className="w-full px-4 py-2  text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500"
                       id="password"
-                      label="password"
+                      label="Password"
                       placeholder="Enter your password"
                       type="password"
+                      value=''
                     />
                   </div>
                   <div>
