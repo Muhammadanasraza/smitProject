@@ -7,7 +7,6 @@ import Home from './components/Home';
 
 import Login from './auth/login/login';
 import Register from './auth/register/register';
-import Student from './components/Trainers';
 import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
 import Courses from './components/Courses';
