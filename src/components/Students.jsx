@@ -9,8 +9,8 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-  } from "@/components/ui/dialog"
-  
+} from "@/components/ui/dialog"
+
 
 export default function Students() {
 
@@ -26,9 +26,9 @@ export default function Students() {
                     Students
                 </h1>
                 {
-                    user == "admin" ? <Dialog>
-                        <Button className="font-medium">
-                            <DialogTrigger>Add Students</DialogTrigger>
+                    user == "admin" ?
+                        <Dialog >
+                            <DialogTrigger className="py-2 px-3 w-fit h-full font-normal text-white bg-gray-950 transition hover:bg-gray-800 rounded-sm">Add Students</DialogTrigger>
                             <DialogContent>
                                 <DialogHeader>
                                     <DialogTitle>Are you absolutely sure?</DialogTitle>
@@ -38,8 +38,7 @@ export default function Students() {
                                     </DialogDescription>
                                 </DialogHeader>
                             </DialogContent>
-                        </Button>
-                    </Dialog> :
+                        </Dialog> :
                         ""
                 }
 
