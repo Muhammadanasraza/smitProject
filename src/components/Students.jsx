@@ -27,17 +27,18 @@ export default function Students() {
                 </h1>
                 {
                     user == "admin" ?
-                        <Dialog >
-                            <DialogTrigger className="py-2 px-3 w-fit h-full font-normal text-white bg-gray-950 transition hover:bg-gray-800 rounded-sm">Add Students</DialogTrigger>
-                            <DialogContent>
-                                <DialogHeader>
-                                    <DialogTitle>Are you absolutely sure?</DialogTitle>
-                                    <DialogDescription>
-                                        This action cannot be undone. This will permanently delete your account
-                                        and remove your data from our servers.
-                                    </DialogDescription>
-                                </DialogHeader>
-                            </DialogContent>
+                        <Dialog>
+                            
+                                <DialogTrigger>Add Students</DialogTrigger>
+                                <DialogContent>
+                                    <DialogHeader>
+                                        <DialogTitle>Are you absolutely sure?</DialogTitle>
+                                        <DialogDescription>
+                                            This action cannot be undone. This will permanently delete your account
+                                            and remove your data from our servers.
+                                        </DialogDescription>
+                                    </DialogHeader>
+                                </DialogContent>
                         </Dialog> :
                         ""
                 }
