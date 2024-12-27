@@ -118,7 +118,7 @@ export function StudentTable({
                                         data-state={row.getIsSelected() && "selected"}
                                     >
                                         {row.getVisibleCells().map((cell) => {
-                                            if (cell.column.id === "email") {
+                                            if (cell.column.id === "name") {
                                                 return (
                                                     <TableCell
                                                         className="flex items-center gap-1"
