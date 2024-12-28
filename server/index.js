@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./database/db.js";
 import user from "./routers/user.route.js";
+import course from "./routers/course.route.js";
+import getAvailableCourses from "./routers/course.route.js";
 import cors from "cors"
 
 dotenv.config({});
@@ -22,8 +24,10 @@ app.use(
 );
 
 
-// apis
+// apis routers
 app.use("/api/v1/user", user);
+app.use("/api/v1/course", course);
+app.use("/api/v1/course/available", getAvailableCourses);
 
 
 app.listen(PORT, () => {

@@ -1,216 +1,80 @@
-import { Course } from "../models/course.model.js";
-import { Lecture } from "../models/lecture.model.js";
-import {
-  deleteMediaFromCloudinary,
-  deleteVideoFromCloudinary,
-  uploadMedia,
-} from "../utils/cloudinary.js";
+import { CourseModal } from "../Modals/CourseModal.js";
 
+// 1. Create a new course (Admin functionality)
 export const createCourse = async (req, res) => {
   try {
-    const { courseTitle, category } = req.body;
-    if (!courseTitle || !category) {
-      return res.status(400).json({
-        message: "Course title and category is required.",
-      });
+    const { title, duration, eligibility } = req.body;
+    if (!title || !duration || !eligibility) {
+      return res.status(400).json({ message: "All fields are required." });
     }
 
-    const course = await Course.create({
-      courseTitle,
-      category,
-      creator: req.id,
-    });
-
-    return res.status(201).json({
-      course,
-      message: "Course created.",
-    });
+    const course = await CourseModal.create({ title, duration, eligibility });
+    return res
+      .status(201)
+      .json({ course, message: "Course created successfully." });
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      message: "Failed to create course",
-    });
+    console.error(error);
+    return res.status(500).json({ message: "Failed to create course." });
   }
 };
 
-export const searchCourse = async (req, res) => {
+// 2. Get all available courses (Student functionality)
+export const getAvailableCourses = async (req, res) => {
   try {
-    const { query = "", categories = [], sortByPrice = "" } = req.query;
-    console.log(categories);
-
-    // create search query
-    const searchCriteria = {
-      isPublished: true,
-      $or: [
-        { courseTitle: { $regex: query, $options: "i" } },
-        { subTitle: { $regex: query, $options: "i" } },
-        { category: { $regex: query, $options: "i" } },
-      ],
-    };
-
-    // if categories selected
-    if (categories.length > 0) {
-      searchCriteria.category = { $in: categories };
-    }
-
-    // define sorting order
-    const sortOptions = {};
-    if (sortByPrice === "low") {
-      sortOptions.coursePrice = 1; //sort by price in ascending
-    } else if (sortByPrice === "high") {
-      sortOptions.coursePrice = -1; // descending
-    }
-
-    let courses = await Course.find(searchCriteria)
-      .populate({ path: "creator", select: "name photoUrl" })
-      .sort(sortOptions);
-
-    return res.status(200).json({
-      success: true,
-      courses: courses || [],
-    });
+    const courses = await CourseModal.find({ isPublished: true });
+    return res.status(200).json(courses);
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    return res.status(500).json({ message: "Failed to fetch courses." });
   }
 };
 
-export const getPublishedCourse = async (_, res) => {
+// 3. Get trainer's courses with enrolled students (trainer functionality)
+export const gettrainerCourses = async (req, res) => {
   try {
-    const courses = await Course.find({ isPublished: true }).populate({
-      path: "creator",
-      select: "name photoUrl",
-    });
-    if (!courses) {
-      return res.status(404).json({
-        message: "Course not found",
-      });
+    const { trainerId } = req.params;
+    const courses = await CourseModal.find({ trainerId }).populate(
+      "students",
+      "name email"
+    );
+
+    if (!courses || courses.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No courses found for this trainer." });
     }
-    return res.status(200).json({
-      courses,
-    });
+
+    return res.status(200).json(courses);
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      message: "Failed to get published courses",
-    });
+    console.error(error);
+    return res
+      .status(500)
+      .json({ message: "Failed to fetch trainer courses." });
   }
 };
-export const getCreatorCourses = async (req, res) => {
+
+// 4. Get course enrollment details (Admin functionality)
+export const getCourseEnrollments = async (req, res) => {
   try {
-    const userId = req.id;
-    const courses = await Course.find({ creator: userId });
-    if (!courses) {
-      return res.status(404).json({
-        courses: [],
-        message: "Course not found",
-      });
-    }
-    return res.status(200).json({
-      courses,
-    });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      message: "Failed to create course",
-    });
-  }
-};
-export const editCourse = async (req, res) => {
-  try {
-    const courseId = req.params.courseId;
-    const {
-      courseTitle,
-      subTitle,
-      description,
-      category,
-      courseLevel,
-      coursePrice,
-    } = req.body;
-    const thumbnail = req.file;
-
-    let course = await Course.findById(courseId);
-    if (!course) {
-      return res.status(404).json({
-        message: "Course not found!",
-      });
-    }
-    let courseThumbnail;
-    if (thumbnail) {
-      if (course.courseThumbnail) {
-        const publicId = course.courseThumbnail.split("/").pop().split(".")[0];
-        await deleteMediaFromCloudinary(publicId); // delete old image
-      }
-      // upload a thumbnail on clourdinary
-      courseThumbnail = await uploadMedia(thumbnail.path);
-    }
-
-    const updateData = {
-      description,
-      duration,
-      eligibility
-    };
-
-    course = await Course.findByIdAndUpdate(courseId, updateData, {
-      new: true,
-    });
-
-    return res.status(200).json({
-      course,
-      message: "Course updated successfully.",
-    });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      message: "Failed to create course",
-    });
-  }
-};
-export const getCourseById = async (req, res) => {
-  try {
-    const { courseId } = req.params;
-
-    const course = await Course.findById(courseId);
+    const { id } = req.params;
+    const course = await CourseModal.findById(id).populate(
+      "students",
+      "name email"
+    );
 
     if (!course) {
-      return res.status(404).json({
-        message: "Course not found!",
-      });
+      return res.status(404).json({ message: "Course not found." });
     }
+
     return res.status(200).json({
-      course,
+      courseTitle: course.title,
+      studentsEnrolled: course.students.length,
+      studentsDetails: course.students,
     });
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      message: "Failed to get course by id",
-    });
+    console.error(error);
+    return res
+      .status(500)
+      .json({ message: "Failed to fetch course enrollments." });
   }
 };
-
-// // publich unpublish course logic
-
-// export const togglePublishCourse = async (req, res) => {
-//   try {
-//     const { courseId } = req.params;
-//     const { publish } = req.query; // true, false
-//     const course = await Course.findById(courseId);
-//     if (!course) {
-//       return res.status(404).json({
-//         message: "Course not found!",
-//       });
-//     }
-//     // publish status based on the query paramter
-//     course.isPublished = publish === "true";
-//     await course.save();
-
-//     const statusMessage = course.isPublished ? "Published" : "Unpublished";
-//     return res.status(200).json({
-//       message: `Course is ${statusMessage}`,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     return res.status(500).json({
-//       message: "Failed to update status",
-//     });
-//   }
-// };
