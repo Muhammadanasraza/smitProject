@@ -1,8 +1,6 @@
 // import { columns } from "@/components/StudentTable/column";
 // import { StudentTable } from "@/components/StudentTable/data-table";
-import {
-   
-} from "@/components/ui/dialog"
+
 import {  Dialog,
     DialogContent,
     DialogDescription,
@@ -28,7 +26,7 @@ export default function Students() {
                     user == "admin" ?
                         <Dialog>
                             
-                                <DialogTrigger>Add Students</DialogTrigger>
+                                <DialogTrigger >Add Students</DialogTrigger>
                                 <DialogContent>
                                     <DialogHeader>
                                         <DialogTitle>Are you absolutely sure?</DialogTitle>

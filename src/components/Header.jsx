@@ -17,6 +17,7 @@ import logo from "../assets/images/logo.jpg"
 
 const Header = () => {
   const [user, setUser] = useState(null);
+  const users = "admin"
 
   useEffect(() => {
     const stateChange = auth.onAuthStateChanged((user) => {
@@ -99,6 +100,17 @@ const Header = () => {
                   <GraduationCap className="h-5 w-5" />
                   <span>Tainers</span>
                 </a>
+                <a href="/courses" className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors">
+                  <GraduationCap className="h-5 w-5" />
+                  <span>Courses</span>
+                </a>
+                {
+                  users? 
+                <a href="/requests" className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors">
+                  <GraduationCap className="h-5 w-5" />
+                  <span>Course Requests</span>
+                </a>: ""
+                }
                 <button
                   onClick={handleLogout}
                   className="flex items-center space-x-2 text-red-600 hover:text-red-700 transition-colors"
