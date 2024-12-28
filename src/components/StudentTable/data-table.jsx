@@ -6,15 +6,6 @@ import * as React from "react"
 //     // useReactTable,
 // } from "@tanstack/react-table"
 
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
-
 
 import {
 
@@ -29,7 +20,13 @@ import {
 } from "@tanstack/react-table"
 
 import { Button } from "@/components/ui/button"
-import FloatingLabelInput from "@/components/ui/FloatingLabelInput";
+import {  Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow, } from "../ui/table";
+import  Input  from "../ui/input";
 
 
 
@@ -61,7 +58,7 @@ export function StudentTable({
         <div className="max-w-screen-xl mx-auto rounded-md border ">
             <div className="flex justify-between px-3 py-2 gap-2 ">
 
-                <FloatingLabelInput
+                <Input
                     placeholder={`Filter ${selectedColumn}...`}
                     value={(table.getColumn(selectedColumn)?.getFilterValue()) ?? ""}
                     onChange={(event) =>

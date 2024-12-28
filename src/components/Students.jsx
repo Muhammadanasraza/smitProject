@@ -1,15 +1,14 @@
-import { columns } from "@/components/StudentTable/column";
-import { StudentTable } from "@/components/StudentTable/data-table";
-import { Button } from "@/components/ui/button";
-import { studentData } from "@/lib/data";
+// import { columns } from "@/components/StudentTable/column";
+// import { StudentTable } from "@/components/StudentTable/data-table";
 import {
-    Dialog,
+   
+} from "@/components/ui/dialog"
+import {  Dialog,
     DialogContent,
     DialogDescription,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog"
+    DialogTrigger, } from "./ui/dialog";
 
 
 export default function Students() {
@@ -45,9 +44,9 @@ export default function Students() {
 
             </div>
 
-            <div className=" ">
+            {/* <div className=" ">
                 <StudentTable columns={columns} data={studentData} />
-            </div>
+            </div> */}
             {/* <Button className="max-sm ">Login </Button> */}
         </div>
     );

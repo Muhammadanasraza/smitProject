@@ -3,14 +3,15 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router";
 import Header from './components/Header';
-import Home from './components/Home';
+import Home from './pages/Home/Home';
 import Login from './auth/login/login';
 import Register from './auth/register/register';
 import Dashboard from './components/Dashboard';
-import Profile from './components/Profile';
-import Courses from './components/Courses';
+import Profile from './pages/Profile/Profile';
+import Courses from './pages/Courses/Courses';
 import Students from './components/Students';
-import Trainers from './components/Trainers';
+import Trainers from './pages/Trainer/Trainers';
+import StudentsInfo from './pages/Student/StudentsInfo';
 function App() {
 
   return (
@@ -26,7 +27,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/courses' element={<Courses />} />
-          <Route path='/student' element={<Students />} />
+          <Route path='/student' element={<StudentsInfo />} />
         </Routes>
       </BrowserRouter>
     </>

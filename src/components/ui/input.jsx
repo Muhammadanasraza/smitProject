@@ -1,27 +1,19 @@
-import React from 'react';
+import * as React from "react"
 
-const FloatingLabelInput = ({
-  id,
-  label,
-  placeholder,
-  type = 'text'
-}) => {
+import { cn } from "@/lib/utils"
+
+const Input = React.forwardRef(({ className, type, ...props }, ref) => {
   return (
-    <div className="relative">
-      <input
-        type={type}
-        id={id}
-        placeholder={placeholder}
-        className="peer w-full border-b border-gray-300 bg-transparent pt-4 pb-1 font-sans text-sm text-gray-900 placeholder-transparent focus:border-blue-500 focus:outline-none"
-      />
-      <label
-        htmlFor={id}
-        className="absolute left-0 -top-3.5 text-sm text-gray-600 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-blue-500"
-      >
-        {label}
-      </label>
-    </div>
+    (<input
+      type={type}
+      className={cn(
+        "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        className
+      )}
+      ref={ref}
+      {...props} />)
   );
-};
+})
+Input.displayName = "Input"
 
-export default FloatingLabelInput;
+export default Input 
