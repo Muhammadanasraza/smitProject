@@ -12,7 +12,7 @@ import Courses from './pages/Courses/Courses';
 import Students from './components/Students';
 import Trainers from './pages/Trainer/Trainers';
 import StudentsInfo from './pages/Student/StudentsInfo';
-import CourseRequests from './pages/CourseRequests';
+import CourseRequests from './pages/Requests/CourseRequests';
 function App() {
 
   return (
