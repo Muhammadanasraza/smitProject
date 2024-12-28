@@ -107,19 +107,7 @@ export default function CourseCard() {
                                                     className="col-span-3"
                                                 />
                                             </div>
-                                            <div className="grid grid-cols-4 items-center gap-4">
-                                                <Label htmlFor="phone" className="text-start">
-                                                    Course
-                                                </Label>
-                                                <Input
-                                                    id="Course"
-                                                    name="Course"
-                                                    type="text"
-                                                    value={formData.Course}
-                                                    onChange={handleInputChange}
-                                                    className="col-span-3"
-                                                />
-                                            </div>
+                                           
                                             <div className="grid grid-cols-4 items-center gap-4">
                                                 <Label htmlFor="message" className="text-start">
                                                     Message
