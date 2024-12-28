@@ -12,6 +12,7 @@ import Courses from './pages/Courses/Courses';
 import Students from './components/Students';
 import Trainers from './pages/Trainer/Trainers';
 import StudentsInfo from './pages/Student/StudentsInfo';
+import CourseRequests from './pages/CourseRequests';
 function App() {
 
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/courses' element={<Courses />} />
           <Route path='/student' element={<StudentsInfo />} />
+          <Route path='/requests' element={<CourseRequests />} />
         </Routes>
       </BrowserRouter>
     </>
