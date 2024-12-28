@@ -21,7 +21,7 @@ function CourseRequests() {
 
             <div className="justify-between flex py-10 ">
                 <h1 className="title-font sm:text-4xl text-3xl mb-4 font-bold text-gray-900">
-                    Students
+                    Courses Requests 
                 </h1>
 
             </div>
@@ -52,10 +52,16 @@ function CourseRequests() {
                                 <p className="col-span-3">ansajsbx</p>
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="Course" className="text-start">
+                                    Course
+                                </Label>
+                                <p className="col-span-3">Web And App</p>
+                            </div>
+                            <div className="grid grid-cols-4 items-start gap-4">
                                 <Label htmlFor="message" className="text-start">
                                     Message
                                 </Label>
-                                <p className="col-span-3">sdsbxs</p>
+                                <p className="col-span-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam nisi sit ea</p>
                             </div>
                         </div>
                         <div className="mt-4 flex justify-between">
