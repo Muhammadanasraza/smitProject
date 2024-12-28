@@ -2,18 +2,25 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const courseSchema = new Schema(
+const batchSchema = new Schema(
   {
-    title: { type: String, unique: true },
+    title: { type: String },
     description: String,
-    duration: String,
-    eligibility: [String],
-    thumbnail: String,
+    course: { type: mongoose.Types.ObjectId, ref: "Course" },
+    status: {
+      type: String,
+      default: "pending",
+      enum: [
+        "pending",
+        "admission-open",
+        "admission-close",
+        "ongoing",
+        "completed",
+      ],
+    },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
-export const CourseModal =
-  mongoose.models.Course || mongoose.model("Course", courseSchema);
+export const BatchModal =
+  mongoose.models.Batch || mongoose.model("Course", batchSchema);
