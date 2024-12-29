@@ -37,6 +37,10 @@ export default function CourseCard() {
         setIsDialogOpen(false)
         // Reset form data
         setFormData({ name: '', email: '', phone: '', message: '' })
+
+
+
+
     }
 
     return (
@@ -55,7 +59,7 @@ export default function CourseCard() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                         <div className="grid grid-col gap-4">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio magnam.</p>
+                            <p>Lorem ipsum dolor sit amet  elit. Distinctio magnam.</p>
                             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                                 <DialogTrigger asChild>
                                     <Button variant="default">Apply Now</Button>
