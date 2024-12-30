@@ -21,3 +21,6 @@ http://localhost:4000/api/v1/batch/
 #get single batches
 http://localhost:4000/api/v1/batch/:id/
 
+#deploy link of apis use after fetching instead of localhost
+https://smitproject.onrender.com/
+
