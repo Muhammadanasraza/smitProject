@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import connectDB from "./database/db.js";
 import user from "./routers/user.route.js";
 import course from "./routers/course.route.js";
-import getAvailableCourses from "./routers/course.route.js";
+import batch from "./routers/batch.route.js";
 import cors from "cors";
 
 dotenv.config({});
@@ -26,6 +26,7 @@ app.use(
 // apis routers
 app.use("/api/v1/user", user);
 app.use("/api/v1/course", course);
+app.use("/api/v1/batch", batch);
 
 app.listen(PORT, () => {
   console.log(`Server listen at port ${PORT}`);
