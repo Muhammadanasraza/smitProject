@@ -3,15 +3,9 @@ import { auth, provider, signInWithPopup } from "../utils/authutils";
 
 const Login = () => {
 
-  const googleLogin = () => {
-
-    signInWithPopup(auth, provider).then(async (result) => {
-      console.log(result);
-      if (result) {
-        window.location.href = "/";
-      }
-    });
-  };
+  const googleLogin = ()=>{
+    window.open("http://localhost:5000/auth/google/callback","_self")
+  }
 
   return (
     <div className="fom">

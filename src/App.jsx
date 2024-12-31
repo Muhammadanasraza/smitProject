@@ -1,5 +1,3 @@
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router";
 import Header from './components/Header';
@@ -13,7 +11,16 @@ import Students from './components/Students';
 import Trainers from './pages/Trainer/Trainers';
 import StudentsInfo from './pages/Student/StudentsInfo';
 import CourseRequests from './pages/Requests/CourseRequests';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 function App() {
+
+  const GoogleAuthWrapper = () => {
+    return (
+      <GoogleOAuthProvider clientId="697739919377-fnnd1r9huib4lp05vbfj98hlok9oan1t.apps.googleusercontent.com">
+        <Login />
+      </GoogleOAuthProvider>
+    )
+          }
 
   return (
     <>
@@ -22,7 +29,7 @@ function App() {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/" element={<Home />} />
-          <Route path="login" element={<Login />} />
+          <Route path="login" element={<GoogleAuthWrapper />} />
           <Route path='register' element={<Register />} />
           <Route path='/trainers' element={<Trainers />} />
           <Route path='/dashboard' element={<Dashboard />} />
